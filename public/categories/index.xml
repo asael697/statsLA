@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Statistics LA</title>
-    <link>/categories/</link>
+    <link>https://zhaohuabing.com/categories/</link>
     <description>Recent content in Categories on Statistics LA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaohuabing.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Spanish</title>
-      <link>/categories/spanish/</link>
+      <link>https://zhaohuabing.com/categories/spanish/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/spanish/</guid>
+      <guid>https://zhaohuabing.com/categories/spanish/</guid>
       <description></description>
     </item>
     

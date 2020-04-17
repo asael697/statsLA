@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Spanish on Statistics LA</title>
-    <link>/categories/spanish/</link>
+    <link>https://zhaohuabing.com/categories/spanish/</link>
     <description>Recent content in Spanish on Statistics LA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 17 Apr 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/spanish/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zhaohuabing.com/categories/spanish/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Introducción a R. ¿Cómo Empiezo?</title>
-      <link>/post/intro_a_r/</link>
+      <link>https://zhaohuabing.com/post/intro_a_r/</link>
       <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/post/intro_a_r/</guid>
+      <guid>https://zhaohuabing.com/post/intro_a_r/</guid>
       <description>Aprender un nuevo lenguaje de programación como R puede ser retador y en algunos casos hasta intimidante, pero existe una gran cantidad de material en la red que puede ser de gran utilidad, y existe una gran comunidad que igual a ti es entusiasta por aprender más y más de este lenguaje, así como expertos y profesores que están motivados a compartir un poco de sus conocimientos, solo debes aprender a buscar.</description>
     </item>
     
