@@ -1,3 +1,9 @@
 ---
 site: blogdown:::blogdown_site
 ---
+
+```{r}
+file.edit(".Rprofile")
+blogdown::build_site(local = TRUE)
+blogdown::build_site(local = FALSE)
+```

@@ -20,8 +20,7 @@ home = ["HTML", "RSS", "Algolia"]
   slogan = "Stats LA"
 
   image_404 = "img/404-bg.jpg"
-  title_404 = "Post not found :("
-  omit_categories = false
+  title_404 = ":("
 
   # leancloud storage for page view counter
   page_view_conter = false 
