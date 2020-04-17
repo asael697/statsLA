@@ -1,5 +1,5 @@
-baseurl = "https://zhaohuabing.com"
-title = "Statistics LatinAmerica"
+baseurl = "https://statsla.netlify.app/"
+title = "Statistics LatinAmeric"
 theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
