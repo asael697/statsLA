@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/post/introtor/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/code/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/intro_a_r/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/montecarlo/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/monte-carlo/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/programming/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/spanish/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/search/placeholder/</loc>
+  </url>
+  
+  <url>
+    <loc>/top/about/</loc>
+  </url>
+  
+  <url>
+    <loc>/top/books/</loc>
+  </url>
+  
+  <url>
+    <loc>/search/</loc>
+  </url>
+  
+  <url>
+    <loc>/top/</loc>
+  </url>
+  
+</urlset>

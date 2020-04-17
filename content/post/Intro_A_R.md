@@ -1,0 +1,40 @@
+---
+author: "Asael Alonzo Matamoros"
+date: "2020-04-17"
+image: https://img.zhaohuabing.com/post-bg-2015.jpg
+categories: ["Spanish"]
+subtitle: Un triste Hola Mundo!
+title: Introducción a R. ¿Cómo Empiezo?
+tags: ["R", "programming", "code"]
+---
+
+Aprender un nuevo lenguaje de programación como R puede ser retador y en algunos casos hasta intimidante, pero existe una gran cantidad de material en la red que puede ser de gran utilidad, y existe una gran comunidad que igual a ti es entusiasta por aprender más y más de este lenguaje, así como expertos y profesores que están motivados a compartir un poco de sus conocimientos, solo debes aprender a buscar. 
+
+# Recursos
+
+En este post presento un listado de todos los materiales gratis que he encontrado en los últimos días  que pueden darte una idea de la inmensa cantidad de material y recursos que puedes encontrar en línea. 
+
+  + **Páginas oficiales:** Dos herramientas muy importantes son las páginas oficiales de R [(CRAN)](https://cran.r-project.org/) y la página de la interfaz más popular [RStudio](https://rstudio.com/), en la primera podrás descargar el compilador y tendrás acceso a toda la amplia gama de paquetes que R ofrece libremente, en Rstudio se descarga la interfaz que facilitará el proceso de aprendizaje así como otros paquetes como [ggplot2](https://ggplot2.tidyverse.org/), [shiny](https://shiny.rstudio.com/), [Rmarkdown](https://rmarkdown.rstudio.com/), [tidyverse](https://www.tidyverse.org/) entre otros, que te darán una idea de sus alcances.
+  
+ + **Cursos gratuitos:** Existen muchas páginas web como [coursera](https://www.coursera.org/), [Edex](https://www.edx.org/), o  [Datacamp](https://www.datacamp.com/) que ofrecen cursos gratuitos o muy bajo costos. Otra alternativa son los cursos del United states census que puedes ver [aquí](https://www.census.gov/data/academy/courses/choroplethr.html), el curso actual que ofrecen es para analizar data de censos. Otra nueva herramienta que descubrí hace unos días es [OpenIntro](https://www.openintro.org/) esta página tiene muchos recursos como libros, videos, laboratorios, contacto de profesores, entre otros,  la verdad estoy ansioso por tener un poco de tiempo y estudiar su material de apoyo.
+ 
+ + **Libros gratuitos:** Estos son los más difíciles de encontrar, en su mayoría los libros son pagados o solo están disponibles para su compra en físico, aunque también algunos  autores dejan una copia en pdf  de sus borradores o versiones anteriores en la web, en el siguiente enlace encontrarás una lista de 80 libros para análisis de datos y algunos de ellos están disponibles para su descarga, busca el enlace [aquí](https://www.bigdatanews.datasciencecentral.com/profiles/blogs/80-best-data-science-books-that-are-worthy-reading).
+ 
+ + **Libros web:** R por ser un lenguaje open source, tiene la ventaja que la mayoría de paquetes y librerías son de uso libre, y muchos autores al publicar sus paquetes, publican libros web en github o en sus propios sitios web que te ayudan a entender su trabajo, un ejemplo de eso es el famoso desarrollador  Hadley Wickham  que publicó su libro [R for data science](https://r4ds.had.co.nz/)  meses después de presentar el tidyverse. Hace poco publicó su libro  [Advanced R](https://adv-r.hadley.nz/)  en su sitio web.
+  
+ + **Open source Journals:** Existen muchos Journals donde varios profesores e investigadores publican los paquetes que desarrollaron para realizar su investigación, es más, el mismo R posee su propio open source journal [(The R journal)](https://journal.r-project.org/), donde los autores publican artículos explicando la funcionalidad y eficiencia de sus códigos. Otros journal famosos son el "Journal of Statistical Software" [(JSS)](https://www.jstatsoft.org/index) y el "Journal of Open Source Software" [(JOSS)](https://joss.theoj.org).
+
+ + **Posts:** Existen muchos post paginas web y tweets donde encontrarás información, ayuda y consejos para desarrollarte como programador o analista de datos. En twitter existe toda una comunidad donde desarrolladores famosos publican sus libros, artículos, y eventos constantemente, un ejemplo es el post en el siguiente [enlace](https://medium.com/vickdata/top-5-free-resources-for-learning-data-science-4c2108ff97c0) que muestra el top 5 de los mejores recursos en R para el análisis de datos, publicado por  Rebecca Vickery, una famosa analista de datos.
+ 
+# Primer programa: Hola mundo
+
+En el siguiente chunk  muestro que tan fácil es hacer el típico programa "Hola Mundo!" en R, simplemente escribe: 
+
+``` r
+print("Hola Mundo!")
+```
+ "Hola Mundo!"
+
+Finalmente, te motivo a que estudies este asombroso lenguaje lo más pronto posible, abras una cuenta en twitter y me sigas, ahí publico constantemente trabajos y posts interesantes que encuentro y podrás ser parte de una gran comunidad dedicada al aprendizaje constante.
+
+

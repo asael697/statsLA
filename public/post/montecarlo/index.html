@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Statistics LA">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="//img/post-bg-coffee.jpeg">
+    <meta property="twitter:image" content="//img/post-bg-coffee.jpeg" />
+    
+
+    
+    <meta name="title" content="Introduction to Monte Carlo methods for estimation" />
+    <meta property="og:title" content="Introduction to Monte Carlo methods for estimation" />
+    <meta property="twitter:title" content="Introduction to Monte Carlo methods for estimation" />
+    
+
+    
+    <meta name="description" content="Statistics and Machine Learning in Latin America">
+    <meta property="og:description" content="Statistics and Machine Learning in Latin America" />
+    <meta property="twitter:description" content="Statistics and Machine Learning in Latin America" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Statistics, Latin America, R, python, mathematics, probability">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Introduction to Monte Carlo methods for estimation-Stats LA| Statistics Latin America</title>
+
+    <link rel="canonical" href="/post/montecarlo/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Statistics LA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/spanish">spanish</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://img.zhaohuabing.com/post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/r" title="R">
+                            R
+                        </a>
+                        
+                        <a class="tag" href="/tags/monte-carlo" title="Monte Carlo">
+                            Monte Carlo
+                        </a>
+                        
+                        <a class="tag" href="/tags/programming" title="programming">
+                            programming
+                        </a>
+                        
+                        <a class="tag" href="/tags/code" title="code">
+                            code
+                        </a>
+                        
+                    </div>
+                    <h1>Introduction to Monte Carlo methods for estimation</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Asael Alonzo Matamoros
+                         
+                        on 
+                        Friday, April 17, 2020
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#example-1-exponential-integral-approximation">Example 1: Exponential integral approximation</a></li>
+    <li><a href="#generalized-monte-carlo-approximation">Generalized Monte Carlo approximation</a></li>
+    <li><a href="#monte-carlo-methods-in-bayesian-data-analysis">Monte Carlo methods in Bayesian data analysis</a>
+      <ul>
+        <li><a href="#example-2-probability-approximation-of-a-gamma-distribution">Example 2: Probability approximation of a gamma distribution</a></li>
+        <li><a href="#example-3-quantile-approximation-of-a-normal-distribution">Example 3: Quantile approximation of a normal distribution</a></li>
+      </ul>
+    </li>
+    <li><a href="#discussions-and-conclusions">Discussions and conclusions</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+                
+                <h1 id="introduction">Introduction</h1>
+<p>Two major classes of numerical problems that arise in data analysis
+procedures are optimization and integration problems. It is not always
+possible to analytically compute the estimators associated with a given
+model and we are often led to consider numerical solutions. One way to
+afford that problematic is to use simulation. Monte Carlo estimation
+refers to simulating hypothetical draws from a probability distribution,
+in order to calculate important quantities of that distribution.</p>
+<p>The basic idea of Monte Carlo consist of writing the integral as an
+expected value with respect to some probability distribution, and then
+approximated using the <a href="https://en.wikipedia.org/wiki/Method_of_moments_statistics.">method of moment
+estimator</a><br>
+$$E[g(X)] \approx \overline{g(X)} = \dfrac{1}{n}\sum g(X_{i})$$</p>
+<p>If we have a continuous function <em>g</em>(<em>θ</em>) and we want to integrated in
+the interval (a,b), we can rewrite our integral as an expected value of
+an uniform distribution <em>U</em> ∼ <em>U</em>[<em>a</em>, <em>b</em>], that is:</p>
+<p>$$I = \int_{a}^{b}g(\theta)d\theta = \int_{a}^{b}[g(\theta)(b-a)]\dfrac{1}{(b-a)}d\theta = E_{U}[(b-a)g(\theta)]$$
+Using the method of moments estimator our integral approximation is:</p>
+<p>$$I =\int_{a}^{b}g(\theta)d\theta \approx \dfrac{1}{n}\sum_{k=1}^{n}(b-a)g(\theta_{k})$$</p>
+<p>Where the
+<em>θ</em><!-- raw HTML omitted -->1<!-- raw HTML omitted -->, <em>θ</em><!-- raw HTML omitted -->2<!-- raw HTML omitted -->, <em>θ</em><!-- raw HTML omitted -->3<!-- raw HTML omitted -->, <em>θ</em><!-- raw HTML omitted -->4<!-- raw HTML omitted -->, …, <em>θ</em><!-- raw HTML omitted --><em>n</em><!-- raw HTML omitted -->
+are simulated values from an uniform distribution.</p>
+<h1 id="example-1-exponential-integral-approximation">Example 1: Exponential integral approximation</h1>
+<ol>
+<li>Given a function <em>f</em>(<em>x</em>) = <em>e</em><!-- raw HTML omitted --><em>x</em><!-- raw HTML omitted --> the integral in the
+interval [3,5] is:</li>
+</ol>
+<p><em>I</em> = ∫<!-- raw HTML omitted -->3<!-- raw HTML omitted --><!-- raw HTML omitted -->5<!-- raw HTML omitted --><em>f</em>(<em>x</em>)<em>d**x</em> = ∫<!-- raw HTML omitted -->3<!-- raw HTML omitted --><!-- raw HTML omitted -->5<!-- raw HTML omitted --><em>e</em><!-- raw HTML omitted --><em>x</em><!-- raw HTML omitted --><em>d**x</em> = <em>e</em><!-- raw HTML omitted --><em>x</em><!-- raw HTML omitted -->|<!-- raw HTML omitted -->3<!-- raw HTML omitted --><!-- raw HTML omitted -->5<!-- raw HTML omitted --> = <em>e</em><!-- raw HTML omitted -->5<!-- raw HTML omitted --> − <em>e</em><!-- raw HTML omitted -->3<!-- raw HTML omitted --> = 128.3276</p>
+<p>The MonteCarlo approximation of the integral is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#6272a4">#       Declaring the desired function</span>
+f <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">function</span>(x){<span style="color:#50fa7b">return</span>(<span style="color:#50fa7b">exp</span>(x))}
+<span style="color:#6272a4">#       Declaring the absolute error function</span>
+error <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">function</span>(x,y){<span style="color:#50fa7b">return</span>(<span style="color:#50fa7b">abs</span>(x<span style="color:#ff79c6">-</span>y))} 
+<span style="color:#6272a4">#       The actual integral answer</span>
+ans <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">exp</span>(<span style="color:#bd93f9">5</span>)<span style="color:#ff79c6">-</span><span style="color:#50fa7b">exp</span>(<span style="color:#bd93f9">3</span>) 
+
+<span style="color:#50fa7b">set.seed</span>(<span style="color:#bd93f9">6971</span>)
+<span style="color:#6272a4">#       number of iterations</span>
+n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>^2 
+<span style="color:#6272a4">#       simulated uniform data</span>
+x<span style="color:#ff79c6">=</span> <span style="color:#50fa7b">runif</span>(n,<span style="color:#bd93f9">3</span>,<span style="color:#bd93f9">5</span>) 
+<span style="color:#6272a4">#       MonteCarlo approximation</span>
+MCa<span style="color:#ff79c6">=</span> (<span style="color:#bd93f9">5-3</span>)<span style="color:#ff79c6">*</span><span style="color:#50fa7b">mean</span>(<span style="color:#50fa7b">f</span>(x)) 
+<span style="color:#6272a4">#       Approximation error</span>
+e <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">error</span>(ans,MCa)
+
+rest <span style="color:#ff79c6">=</span>  <span style="color:#50fa7b">data.frame</span>(n <span style="color:#ff79c6">=</span> n,MCapprox <span style="color:#ff79c6">=</span> MCa,error <span style="color:#ff79c6">=</span> e)
+<span style="color:#50fa7b">set.seed</span>(<span style="color:#bd93f9">6971</span>)
+<span style="color:#50fa7b">for</span>(k in <span style="color:#bd93f9">3</span><span style="color:#ff79c6">:</span><span style="color:#bd93f9">6</span>){
+  n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>^k
+  x <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">runif</span>(n,<span style="color:#bd93f9">3</span>,<span style="color:#bd93f9">5</span>)
+  mca <span style="color:#ff79c6">=</span> (<span style="color:#bd93f9">5-3</span>)<span style="color:#ff79c6">*</span><span style="color:#50fa7b">mean</span>(<span style="color:#50fa7b">f</span>(x))
+  rest <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">rbind</span>(rest,<span style="color:#50fa7b">c</span>(n,mca,<span style="color:#50fa7b">error</span>(ans,mca) ) )
+}
+
+<span style="color:#50fa7b">kable</span>(rest,digits <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">5</span>,align <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;c&#39;</span>,caption <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Integral Monte Carlo approximation results&#34;</span>,
+      col.names <span style="color:#ff79c6">=</span><span style="color:#50fa7b">c</span>(<span style="color:#f1fa8c">&#34;Number of simulations&#34;</span>,<span style="color:#f1fa8c">&#34;Monte Carlo approximation&#34;</span>,<span style="color:#f1fa8c">&#34;Error approximation&#34;</span>))
+</code></pre></div><table>
+<thead>
+<tr>
+<th align="center">Number of simulations</th>
+<th align="center">Monte Carlo approximation</th>
+<th align="center">Error approximation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1e+02</td>
+<td align="center">127.2634</td>
+<td align="center">1.06424</td>
+</tr>
+<tr>
+<td align="center">1e+03</td>
+<td align="center">127.1676</td>
+<td align="center">1.16001</td>
+</tr>
+<tr>
+<td align="center">1e+04</td>
+<td align="center">128.9637</td>
+<td align="center">0.63608</td>
+</tr>
+<tr>
+<td align="center">1e+05</td>
+<td align="center">128.2422</td>
+<td align="center">0.08546</td>
+</tr>
+<tr>
+<td align="center">1e+06</td>
+<td align="center">128.3221</td>
+<td align="center">0.00552</td>
+</tr>
+</tbody>
+</table>
+<h1 id="generalized-monte-carlo-approximation">Generalized Monte Carlo approximation</h1>
+<p>In a general case, the integral approximation for a given distribution f
+is:</p>
+<p>$$I= \int_{a}^{b}g(\theta)d\theta =\int_{a}^{b}\dfrac{g(\theta)}{f(\theta)} f(\theta)d\theta =E_{f}[g(\theta)/f(\theta)] \approx \dfrac{1}{n}\sum_{k=1}^{n}\dfrac{g(\theta_k)}{f(\theta_k)}$$</p>
+<p>An algorithm for construction of <em>Î</em> can be described by the following
+steps:</p>
+<ol>
+<li>
+<p>Generate
+<em>θ</em><!-- raw HTML omitted -->1<!-- raw HTML omitted -->, <em>θ</em><!-- raw HTML omitted -->2<!-- raw HTML omitted -->, <em>θ</em><!-- raw HTML omitted -->3<!-- raw HTML omitted -->, …, <em>θ</em><!-- raw HTML omitted --><em>n</em><!-- raw HTML omitted -->
+from a f distribution</p>
+</li>
+<li>
+<p>Calculate:
+<em>g</em>(<em>θ</em><!-- raw HTML omitted -->1<!-- raw HTML omitted -->)/<em>f</em>(<em>θ</em><!-- raw HTML omitted -->1<!-- raw HTML omitted -->), <em>g</em>(<em>θ</em><!-- raw HTML omitted -->2<!-- raw HTML omitted -->)/<em>f</em>(<em>θ</em><!-- raw HTML omitted -->2<!-- raw HTML omitted -->), <em>g</em>(<em>θ</em><!-- raw HTML omitted -->3<!-- raw HTML omitted -->)/<em>f</em>(<em>θ</em><!-- raw HTML omitted -->3<!-- raw HTML omitted -->), …, <em>g</em>(<em>θ</em><!-- raw HTML omitted --><em>n</em><!-- raw HTML omitted -->)/<em>f</em>(<em>θ</em><!-- raw HTML omitted --><em>n</em><!-- raw HTML omitted -->)</p>
+</li>
+<li>
+<p>Obtain the sample mean:
+$$\overline{I} = \dfrac{1}{n}\sum_{k=1}^{n}\dfrac{g(\theta_k)}{f(\theta_k)}$$</p>
+</li>
+</ol>
+<p>In the next chunk, the simple Monte Carlo approximation function is
+presented to show how does the algorithm works, where a and b are the
+uniform density parameters, n the number of desired simulations, and f
+is the function the we want to integrate.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#6272a4"># The simple Monte Carlo function</span>
+MCaf <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">function</span>(n,a,b,f){
+x <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">runif</span>(n,a,b)
+MCa <span style="color:#ff79c6">=</span> (b<span style="color:#ff79c6">-</span>a)<span style="color:#ff79c6">*</span><span style="color:#50fa7b">mean</span>(<span style="color:#50fa7b">f</span>(x))
+<span style="color:#50fa7b">return</span>(MCa)
+}
+</code></pre></div><h1 id="monte-carlo-methods-in-bayesian-data-analysis">Monte Carlo methods in Bayesian data analysis</h1>
+<p>The main idea of the bayesian data analysis is fitting a model (<em>such as
+a regression or a time series model</em>) using a <a href="https://en.wikipedia.org/wiki/Bayesian_inference">bayesian
+inference</a> approach.
+We assume that our parameters of interest have a theoretical
+distribution, this distribution (<em>posterior</em>) is updated using the
+distribution of the observed data (<em>likelihood</em>), and the previous or
+external information about our parameters (<em>prior distribution</em>) by
+using the <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes’
+theorem</a>.</p>
+<p><em>P</em>(<em>θ</em>/<em>X</em>) <em>α</em> <em>P</em>(<em>X</em>/<em>θ</em>)<em>P</em>(<em>θ</em>)
+Where:</p>
+<p><em>P</em>(<em>θ</em>/<em>X</em>) is the parameter <a href="https://en.wikipedia.org/wiki/Posterior_probability">posterior
+distribution</a></p>
+<p><em>P</em>(<em>X</em>/<em>θ</em>) is the sampling distribution of the observed data (
+<a href="https://en.wikipedia.org/wiki/Likelihood_function">likelihood</a> ).</p>
+<p><em>P</em>(<em>θ</em>) is the parameter <a href="https://en.wikipedia.org/wiki/Prior_probability">prior
+distribution</a>.</p>
+<p>The main problematic in the bayesian approach is estimating the
+posterior distribution. The markov chain monte carlo methods
+(<a href="https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">mcmc</a>)
+generates a sample of the posterior distribution, and approximate the
+expected values, probabilities or quantiles using Monte Carlo methods.</p>
+<p>In the next two sections, we provide two examples for approximating
+probabilities and quantiles of a theoretical distribution. The procedure
+presented above are the usual methodologies used in a bayesian approach.</p>
+<h2 id="example-2-probability-approximation-of-a-gamma-distribution">Example 2: Probability approximation of a gamma distribution</h2>
+<p>Lets suppose we want to calculate the probability that a random variable
+<em>θ</em> is between zero and 5 <em>P</em>(0 &lt; <em>θ</em> &lt; 5), where <em>θ</em> has gamma
+distribution with parameter a = 2 and b = 1/3
+(<em>θ</em> ∼ <em>G<strong>a</strong>m<strong>m</strong>a</em>[<em>a</em> = 2, <em>b</em> = 1/3]), so the probability is:</p>
+<p>$$P(0 \leq \theta \leq 5) = E[I_{[0,5]}(\theta)] = \int_{0}^{\infty} I_{[0,5]}(\theta) \dfrac{b^{a}}{\Gamma(a)}\theta^{a -1}e^{-\theta/ b}d\theta  = \int_{0}^{5} \dfrac{b^{a}}{\Gamma(a)}\theta^{a -1}e^{-\theta/ b}d\theta \approx \dfrac{1}{n}\sum_{k = 1}^{n} I_{[0,5]}(\theta_{k})$$
+Where <em>I</em><!-- raw HTML omitted -->[0, 5]<!-- raw HTML omitted -->(<em>θ</em>) = 1 if <em>θ</em> belongs to the interval
+[0,5].The idea of the Monte Carlo approximation, is count the number
+of observations that belong to the interval [0,5], and divide it by
+the total of the simulated data.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#50fa7b">set.seed</span>(<span style="color:#bd93f9">6972</span>)
+<span style="color:#6272a4">#       number of iterations</span>
+n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>^2 
+<span style="color:#6272a4">#       simulated uniform data</span>
+x<span style="color:#ff79c6">=</span> <span style="color:#50fa7b">rgamma</span>(n,shape <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">1</span><span style="color:#ff79c6">/</span><span style="color:#bd93f9">3</span>) 
+<span style="color:#6272a4">#       MonteCarlo approximation</span>
+MCa<span style="color:#ff79c6">=</span> <span style="color:#50fa7b">mean</span>(x <span style="color:#ff79c6">&lt;=</span> <span style="color:#bd93f9">5</span>) 
+<span style="color:#6272a4">#       Approximation error</span>
+e <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">error</span>(<span style="color:#50fa7b">pgamma</span>(<span style="color:#bd93f9">5</span>,<span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">1</span><span style="color:#ff79c6">/</span><span style="color:#bd93f9">3</span>),MCa)
+
+rest <span style="color:#ff79c6">=</span>  <span style="color:#50fa7b">data.frame</span>(n <span style="color:#ff79c6">=</span> n,MCapprox <span style="color:#ff79c6">=</span> MCa,error <span style="color:#ff79c6">=</span> e)
+
+<span style="color:#50fa7b">for</span>(k in <span style="color:#bd93f9">3</span><span style="color:#ff79c6">:</span><span style="color:#bd93f9">6</span>){
+  n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>^k
+  x<span style="color:#ff79c6">=</span> <span style="color:#50fa7b">rgamma</span>(n,shape <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">1</span><span style="color:#ff79c6">/</span><span style="color:#bd93f9">3</span>) 
+  mca<span style="color:#ff79c6">=</span> <span style="color:#50fa7b">mean</span>(x <span style="color:#ff79c6">&lt;=</span> <span style="color:#bd93f9">5</span>) 
+ rest <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">rbind</span>(rest,<span style="color:#50fa7b">c</span>(n,mca,<span style="color:#50fa7b">error</span>(<span style="color:#50fa7b">pgamma</span>(<span style="color:#bd93f9">5</span>,<span style="color:#bd93f9">2</span>,<span style="color:#bd93f9">1</span><span style="color:#ff79c6">/</span><span style="color:#bd93f9">3</span>),mca) ) )
+}
+
+<span style="color:#50fa7b">kable</span>(rest,digits <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">5</span>,align <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;c&#39;</span>,caption <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Probability Monte Carlo approximation results&#34;</span>,
+      col.names <span style="color:#ff79c6">=</span><span style="color:#50fa7b">c</span>(<span style="color:#f1fa8c">&#34;Number of simulations&#34;</span>,<span style="color:#f1fa8c">&#34;Monte Carlo approximation&#34;</span>,<span style="color:#f1fa8c">&#34;Error approximation&#34;</span>))
+</code></pre></div><table>
+<thead>
+<tr>
+<th align="center">Number of simulations</th>
+<th align="center">Monte Carlo approximation</th>
+<th align="center">Error approximation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1e+02</td>
+<td align="center">0.51000</td>
+<td align="center">0.01367</td>
+</tr>
+<tr>
+<td align="center">1e+03</td>
+<td align="center">0.49300</td>
+<td align="center">0.00333</td>
+</tr>
+<tr>
+<td align="center">1e+04</td>
+<td align="center">0.48930</td>
+<td align="center">0.00703</td>
+</tr>
+<tr>
+<td align="center">1e+05</td>
+<td align="center">0.49753</td>
+<td align="center">0.00120</td>
+</tr>
+<tr>
+<td align="center">1e+06</td>
+<td align="center">0.49663</td>
+<td align="center">0.00030</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-3-quantile-approximation-of-a-normal-distribution">Example 3: Quantile approximation of a normal distribution</h2>
+<p>Lets suppose we want to calculate the 0.95 quantile of a random variable
+<em>θ</em> that has normal distribution with parameters <em>μ</em> = 20 and <em>σ</em> = 3
+(<em>θ</em> ∼ <em>n<strong>o</strong>r<strong>m</strong>a**l</em>(<em>μ</em> = 20, <em>σ</em><!-- raw HTML omitted -->2<!-- raw HTML omitted --> = 9)), so the 0.95
+quantile is:</p>
+<p>$$\int_{-\infty}^{q_{95}}\dfrac{1}{\sqrt{2\pi\sigma^{2}}}  e^{\dfrac{(\theta - \mu)^{2}}{2\sigma^{2}} }d\theta = 0.95$$
+The main idea is found the largest sample value that gives a probabilty
+equal or less than 0.95, the Monte Carlo quantile approximation is
+estimate it using the <em>quantile()</em> function of the simulated data.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#50fa7b">set.seed</span>(<span style="color:#bd93f9">6973</span>)
+<span style="color:#6272a4">#       number of iterations</span>
+n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>^2 
+<span style="color:#6272a4">#       simulated uniform data</span>
+  x<span style="color:#ff79c6">=</span> <span style="color:#50fa7b">rnorm</span>(n,<span style="color:#bd93f9">20</span>,<span style="color:#bd93f9">3</span>) 
+<span style="color:#6272a4">#       MonteCarlo approximation</span>
+MCa<span style="color:#ff79c6">=</span> <span style="color:#50fa7b">quantile</span>(x,<span style="color:#bd93f9">0.95</span>) 
+<span style="color:#6272a4">#       Approximation error</span>
+e <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">error</span>(<span style="color:#50fa7b">qnorm</span>(<span style="color:#bd93f9">0.95</span>,<span style="color:#bd93f9">20</span>,<span style="color:#bd93f9">3</span>),MCa)
+
+rest <span style="color:#ff79c6">=</span>  <span style="color:#50fa7b">data.frame</span>(n <span style="color:#ff79c6">=</span> n,MCapprox <span style="color:#ff79c6">=</span> MCa,error <span style="color:#ff79c6">=</span> e)
+
+<span style="color:#50fa7b">for</span>(k in <span style="color:#bd93f9">3</span><span style="color:#ff79c6">:</span><span style="color:#bd93f9">6</span>){
+  n <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>^k
+  x<span style="color:#ff79c6">=</span> <span style="color:#50fa7b">rnorm</span>(n,<span style="color:#bd93f9">20</span>,<span style="color:#bd93f9">3</span>)
+  mca<span style="color:#ff79c6">=</span> <span style="color:#50fa7b">quantile</span>(x,<span style="color:#bd93f9">0.95</span>)
+ rest <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">rbind</span>(rest,<span style="color:#50fa7b">c</span>(n,mca,<span style="color:#50fa7b">error</span>(<span style="color:#50fa7b">qnorm</span>(<span style="color:#bd93f9">0.95</span>,<span style="color:#bd93f9">20</span>,<span style="color:#bd93f9">3</span>),mca) ) )
+}
+
+<span style="color:#50fa7b">kable</span>(rest,digits <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">5</span>,align <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;c&#39;</span>,caption <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Quantile Monte Carlo approximation results&#34;</span>,
+      col.names <span style="color:#ff79c6">=</span><span style="color:#50fa7b">c</span>(<span style="color:#f1fa8c">&#34;Number of simulations&#34;</span>,<span style="color:#f1fa8c">&#34;Monte Carlo approximation&#34;</span>,<span style="color:#f1fa8c">&#34;Error approximation&#34;</span>),row.names <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">FALSE</span>)
+</code></pre></div><table>
+<thead>
+<tr>
+<th align="center">Number of simulations</th>
+<th align="center">Monte Carlo approximation</th>
+<th align="center">Error approximation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1e+02</td>
+<td align="center">25.76068</td>
+<td align="center">0.82612</td>
+</tr>
+<tr>
+<td align="center">1e+03</td>
+<td align="center">24.83333</td>
+<td align="center">0.10123</td>
+</tr>
+<tr>
+<td align="center">1e+04</td>
+<td align="center">24.98454</td>
+<td align="center">0.04997</td>
+</tr>
+<tr>
+<td align="center">1e+05</td>
+<td align="center">24.94259</td>
+<td align="center">0.00803</td>
+</tr>
+<tr>
+<td align="center">1e+06</td>
+<td align="center">24.93760</td>
+<td align="center">0.00304</td>
+</tr>
+</tbody>
+</table>
+<h1 id="discussions-and-conclusions">Discussions and conclusions</h1>
+<p>The Monte Carlo approximation methods offer an alternative tool for
+integral approximation, and is a really important tool in the bayesian
+inference approach, specially when we work with sophisticated and
+complex models. As it seems in all our three examples, the Monte Carlo
+methods offer a really good approximation, but it demands a huge number
+of simulations for getting an approximation error close to zero.</p>
+<h1 id="references">References</h1>
+<ol>
+<li>
+<p><em>Introducing Monte Carlo methods with R</em>, Springer 2004,
+<em>Christian P. Robert and George Casella</em>.</p>
+</li>
+<li>
+<p><em>Handbook of Markov Chain Monte Carlo</em>, Chapman and Hall, <em>Steve
+Brooks, Andrew Gelman, Galin L. Jones and Xiao-Li Meng</em>.</p>
+</li>
+<li>
+<p><em>Introduction to mathematical Statistics</em>, Pearson, <em>Robert V. Hogg,
+Joseph W. Mckean, adn Allen T. Craig</em>.</p>
+</li>
+<li>
+<p><em>Statistical Inference An Integred Approach</em>, Chapman and Hall,
+<em>Helio S. Migon, Dani Gamerman, Francisco Louzada</em>.</p>
+</li>
+</ol>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/post/intro_a_r/" data-toggle="tooltip" data-placement="top" title="Introducción a R. ¿Cómo Empiezo?">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="#ZgotmplZ">asael_am</a></li>
+                        
+                        <li><a target="_blank" href="http://brunaw.com/">Bruna</a></li>
+                        
+                        <li><a target="_blank" href="https://paul-buerkner.github.io/">paul-buerkner</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Statistics LA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:asael_am@hotmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/Asael_am">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/asael.alonzomatamoros?ref=bookmarks">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/asael697">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/asael-alonzo-matamoros-8466836a/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            <li>
+                <a target="_blank" href="https://www.instagram.com/">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Statistics LA 2020
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

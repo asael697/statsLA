@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Statistics LA</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Statistics LA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>code</title>
+      <link>/tags/code/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Monte Carlo</title>
+      <link>/tags/monte-carlo/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/monte-carlo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>/tags/programming/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

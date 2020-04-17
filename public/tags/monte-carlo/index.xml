@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Monte Carlo on Statistics LA</title>
+    <link>/tags/monte-carlo/</link>
+    <description>Recent content in Monte Carlo on Statistics LA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introduction to Monte Carlo methods for estimation</title>
+      <link>/post/montecarlo/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/montecarlo/</guid>
+      <description>Introduction Two major classes of numerical problems that arise in data analysis procedures are optimization and integration problems. It is not always possible to analytically compute the estimators associated with a given model and we are often led to consider numerical solutions. One way to afford that problematic is to use simulation. Monte Carlo estimation refers to simulating hypothetical draws from a probability distribution, in order to calculate important quantities of that distribution.</description>
+    </item>
+    
+  </channel>
+</rss>

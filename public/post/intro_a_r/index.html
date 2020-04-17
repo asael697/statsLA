@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Statistics LA">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="//img/post-bg-coffee.jpeg">
+    <meta property="twitter:image" content="//img/post-bg-coffee.jpeg" />
+    
+
+    
+    <meta name="title" content="Introducción a R. ¿Cómo Empiezo?" />
+    <meta property="og:title" content="Introducción a R. ¿Cómo Empiezo?" />
+    <meta property="twitter:title" content="Introducción a R. ¿Cómo Empiezo?" />
+    
+
+    
+    <meta name="description" content="Statistics and Machine Learning in Latin America">
+    <meta property="og:description" content="Statistics and Machine Learning in Latin America" />
+    <meta property="twitter:description" content="Statistics and Machine Learning in Latin America" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="Statistics, Latin America, R, python, mathematics, probability">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Introducción a R. ¿Cómo Empiezo?-Stats LA| Statistics Latin America</title>
+
+    <link rel="canonical" href="/post/intro_a_r/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Statistics LA</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/spanish">spanish</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('https://img.zhaohuabing.com/post-bg-2015.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/r" title="R">
+                            R
+                        </a>
+                        
+                        <a class="tag" href="/tags/programming" title="programming">
+                            programming
+                        </a>
+                        
+                        <a class="tag" href="/tags/code" title="code">
+                            code
+                        </a>
+                        
+                    </div>
+                    <h1>Introducción a R. ¿Cómo Empiezo?</h1>
+                    <h2 class="subheading">Un triste Hola Mundo!</h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Asael Alonzo Matamoros
+                         
+                        on 
+                        Friday, April 17, 2020
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#recursos">Recursos</a></li>
+    <li><a href="#primer-programa-hola-mundo">Primer programa: Hola mundo</a></li>
+  </ul>
+</nav>
+                
+                <p>Aprender un nuevo lenguaje de programación como R puede ser retador y en algunos casos hasta intimidante, pero existe una gran cantidad de material en la red que puede ser de gran utilidad, y existe una gran comunidad que igual a ti es entusiasta por aprender más y más de este lenguaje, así como expertos y profesores que están motivados a compartir un poco de sus conocimientos, solo debes aprender a buscar.</p>
+<h1 id="recursos">Recursos</h1>
+<p>En este post presento un listado de todos los materiales gratis que he encontrado en los últimos días  que pueden darte una idea de la inmensa cantidad de material y recursos que puedes encontrar en línea.</p>
+<ul>
+<li>
+<p><strong>Páginas oficiales:</strong> Dos herramientas muy importantes son las páginas oficiales de R <a href="https://cran.r-project.org/">(CRAN)</a> y la página de la interfaz más popular <a href="https://rstudio.com/">RStudio</a>, en la primera podrás descargar el compilador y tendrás acceso a toda la amplia gama de paquetes que R ofrece libremente, en Rstudio se descarga la interfaz que facilitará el proceso de aprendizaje así como otros paquetes como <a href="https://ggplot2.tidyverse.org/">ggplot2</a>, <a href="https://shiny.rstudio.com/">shiny</a>, <a href="https://rmarkdown.rstudio.com/">Rmarkdown</a>, <a href="https://www.tidyverse.org/">tidyverse</a> entre otros, que te darán una idea de sus alcances.</p>
+</li>
+<li>
+<p><strong>Cursos gratuitos:</strong> Existen muchas páginas web como <a href="https://www.coursera.org/">coursera</a>, <a href="https://www.edx.org/">Edex</a>, o  <a href="https://www.datacamp.com/">Datacamp</a> que ofrecen cursos gratuitos o muy bajo costos. Otra alternativa son los cursos del United states census que puedes ver <a href="https://www.census.gov/data/academy/courses/choroplethr.html">aquí</a>, el curso actual que ofrecen es para analizar data de censos. Otra nueva herramienta que descubrí hace unos días es <a href="https://www.openintro.org/">OpenIntro</a> esta página tiene muchos recursos como libros, videos, laboratorios, contacto de profesores, entre otros,  la verdad estoy ansioso por tener un poco de tiempo y estudiar su material de apoyo.</p>
+</li>
+<li>
+<p><strong>Libros gratuitos:</strong> Estos son los más difíciles de encontrar, en su mayoría los libros son pagados o solo están disponibles para su compra en físico, aunque también algunos  autores dejan una copia en pdf  de sus borradores o versiones anteriores en la web, en el siguiente enlace encontrarás una lista de 80 libros para análisis de datos y algunos de ellos están disponibles para su descarga, busca el enlace <a href="https://www.bigdatanews.datasciencecentral.com/profiles/blogs/80-best-data-science-books-that-are-worthy-reading">aquí</a>.</p>
+</li>
+<li>
+<p><strong>Libros web:</strong> R por ser un lenguaje open source, tiene la ventaja que la mayoría de paquetes y librerías son de uso libre, y muchos autores al publicar sus paquetes, publican libros web en github o en sus propios sitios web que te ayudan a entender su trabajo, un ejemplo de eso es el famoso desarrollador  Hadley Wickham  que publicó su libro <a href="https://r4ds.had.co.nz/">R for data science</a>  meses después de presentar el tidyverse. Hace poco publicó su libro  <a href="https://adv-r.hadley.nz/">Advanced R</a>  en su sitio web.</p>
+</li>
+<li>
+<p><strong>Open source Journals:</strong> Existen muchos Journals donde varios profesores e investigadores publican los paquetes que desarrollaron para realizar su investigación, es más, el mismo R posee su propio open source journal <a href="https://journal.r-project.org/">(The R journal)</a>, donde los autores publican artículos explicando la funcionalidad y eficiencia de sus códigos. Otros journal famosos son el &ldquo;Journal of Statistical Software&rdquo; <a href="https://www.jstatsoft.org/index">(JSS)</a> y el &ldquo;Journal of Open Source Software&rdquo; <a href="https://joss.theoj.org">(JOSS)</a>.</p>
+</li>
+<li>
+<p><strong>Posts:</strong> Existen muchos post paginas web y tweets donde encontrarás información, ayuda y consejos para desarrollarte como programador o analista de datos. En twitter existe toda una comunidad donde desarrolladores famosos publican sus libros, artículos, y eventos constantemente, un ejemplo es el post en el siguiente <a href="https://medium.com/vickdata/top-5-free-resources-for-learning-data-science-4c2108ff97c0">enlace</a> que muestra el top 5 de los mejores recursos en R para el análisis de datos, publicado por  Rebecca Vickery, una famosa analista de datos.</p>
+</li>
+</ul>
+<h1 id="primer-programa-hola-mundo">Primer programa: Hola mundo</h1>
+<p>En el siguiente chunk  muestro que tan fácil es hacer el típico programa &ldquo;Hola Mundo!&rdquo; en R, simplemente escribe:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#50fa7b">print</span>(<span style="color:#f1fa8c">&#34;Hola Mundo!&#34;</span>)
+</code></pre></div><p>&ldquo;Hola Mundo!&rdquo;</p>
+<p>Finalmente, te motivo a que estudies este asombroso lenguaje lo más pronto posible, abras una cuenta en twitter y me sigas, ahí publico constantemente trabajos y posts interesantes que encuentro y podrás ser parte de una gran comunidad dedicada al aprendizaje constante.</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/montecarlo/" data-toggle="tooltip" data-placement="top" title="Introduction to Monte Carlo methods for estimation">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/introtor/" data-toggle="tooltip" data-placement="top" title="An Introduction to R. How do I start?">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-11 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                        <li><a target="_blank" href="#ZgotmplZ">asael_am</a></li>
+                        
+                        <li><a target="_blank" href="http://brunaw.com/">Bruna</a></li>
+                        
+                        <li><a target="_blank" href="https://paul-buerkner.github.io/">paul-buerkner</a></li>
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Statistics LA" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:asael_am@hotmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    <li>
+                        <a href="https://twitter.com/Asael_am">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/asael.alonzomatamoros?ref=bookmarks">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/asael697">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/asael-alonzo-matamoros-8466836a/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            <li>
+                <a target="_blank" href="https://www.instagram.com/">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+            </li>
+            
+            
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Statistics LA 2020
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
