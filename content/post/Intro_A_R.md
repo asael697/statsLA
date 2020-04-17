@@ -2,6 +2,7 @@
 author: "Asael Alonzo Matamoros"
 date: "2020-04-17"
 image: https://img.zhaohuabing.com/post-bg-2015.jpg
+layout: post
 categories: ["Spanish"]
 subtitle: Un triste Hola Mundo!
 title: Introducción a R. ¿Cómo Empiezo?
