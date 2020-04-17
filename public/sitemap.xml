@@ -3,83 +3,83 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://zhaohuabing.com/post/introtor/</loc>
+    <loc>/tags/code/</loc>
     <lastmod>2020-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/categories/</loc>
+    <loc>/post/2020-17-04-montecarlo/</loc>
     <lastmod>2020-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/tags/code/</loc>
+    <loc>/tags/monte-carlo/</loc>
     <lastmod>2020-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/post/intro_a_r/</loc>
+    <loc>/post/</loc>
     <lastmod>2020-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/post/montecarlo/</loc>
+    <loc>/tags/programming/</loc>
     <lastmod>2020-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/tags/monte-carlo/</loc>
+    <loc>/tags/r/</loc>
     <lastmod>2020-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/post/</loc>
+    <loc>/</loc>
     <lastmod>2020-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/tags/programming/</loc>
+    <loc>/tags/</loc>
     <lastmod>2020-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/tags/r/</loc>
-    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+    <loc>/post/2020-16-04-intro-a-r/</loc>
+    <lastmod>2020-04-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/categories/spanish/</loc>
-    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+    <loc>/categories/</loc>
+    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/</loc>
-    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+    <loc>/post/2020-15-04-intro-a-r/</loc>
+    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/tags/</loc>
-    <lastmod>2020-04-17T00:00:00+00:00</lastmod>
+    <loc>/categories/spanish/</loc>
+    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/search/placeholder/</loc>
+    <loc>/search/placeholder/</loc>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/top/about/</loc>
+    <loc>/top/about/</loc>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/top/books/</loc>
+    <loc>/top/books/</loc>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/search/</loc>
+    <loc>/search/</loc>
   </url>
   
   <url>
-    <loc>https://zhaohuabing.com/top/</loc>
+    <loc>/top/</loc>
   </url>
   
 </urlset>

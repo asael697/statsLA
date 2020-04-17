@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tops on Statistics LA</title>
-    <link>https://zhaohuabing.com/top/</link>
-    <description>Recent content in Tops on Statistics LA</description>
+    <title>Tops on Statistics LatinAmerica</title>
+    <link>/top/</link>
+    <description>Recent content in Tops on Statistics LatinAmerica</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://zhaohuabing.com/top/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/top/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://zhaohuabing.com/top/about/</link>
+      <link>/top/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zhaohuabing.com/top/about/</guid>
+      <guid>/top/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://zhaohuabing.com/top/books/</link>
+      <link>/top/books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://zhaohuabing.com/top/books/</guid>
+      <guid>/top/books/</guid>
       <description></description>
     </item>
     
