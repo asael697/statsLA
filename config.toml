@@ -30,9 +30,9 @@ home = ["HTML", "RSS", "Algolia"]
 
   # algolia site search
   algolia_search = true
-  algolia_appId = ""
-  algolia_indexName = ""
-  algolia_apiKey = ""
+  algolia_appId = "BEAR0EH5FT"
+  algolia_indexName = "statsLA"
+  algolia_apiKey = "1133ef8706babe31d700fe53877807a0"
 
   # Sidebar settings
   sidebar_about_description = "Statistics, Machine Learning, Bayesian, programming, R, python, Julia"
