@@ -83,8 +83,8 @@ home = ["HTML", "RSS", "Algolia"]
   #git           = "full profile url for git user"
   
   [[params.friend_link]]
-  title = "asael_am"
-  href =  "hhttps://asaelam.wixsite.com/asael697site"
+  title = "asael"
+  href =  "https://asaelam.wixsite.com/asael697site"
   [[params.friend_link]]
   title = "Bruna"
   href =  "http://brunaw.com/"
