@@ -14,7 +14,7 @@ home = ["HTML", "RSS", "Algolia"]
 
 [params]
   header_image = "img/post-bg-coffee.jpeg"
-  SEOTitle = "Stats LA| Statistics Latin America"
+  SEOTitle = "Stats LA | Statistics Latin America"
   description = "Statistics and Machine Learning in Latin America"
   keyword = "Statistics, Latin America, R, python, mathematics, probability"
   slogan = "Stats LA"
